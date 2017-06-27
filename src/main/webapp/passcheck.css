@@ -1,0 +1,279 @@
+
+/* Main Website CSS */
+html {
+  max-width: 100%;
+  max-height: 100%;
+}
+body {
+    margin:0;
+
+}
+body h2 {
+    font-family: 'Ubuntu', sans-serif;
+}
+section p {
+    font-family: 'Open Sans', sans-serif;
+}
+footer p {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 10px auto auto 10px;
+}
+.inside-container {
+    height: 100%;
+}
+.hero {
+    /*background-color: #B3B3B3;*/
+    padding-top: 80px;
+    padding-bottom: 80px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,2989d8+48,2989d8+64,7db9e8+100 */
+    background: #1e5799; /* Old browsers */
+    background: -moz-linear-gradient(45deg, #1e5799 0%, #2989d8 48%, #2989d8 64%, #7db9e8 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, #1e5799 0%,#2989d8 48%,#2989d8 64%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, #1e5799 0%,#2989d8 48%,#2989d8 64%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.hero_img {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.light {
+    font-weight: bold;
+    color: #717070;
+}
+.tagline {
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 4px;
+    font-weight: lighter;
+    font-size: 48px;
+    letter-spacing: 1px;
+}
+/* Navigation */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+  display: flex;/*Flex*/
+  align-items: center;/*Flex*/
+  justify-content: center;/*Flex*/
+}
+
+/*Flex Shit To Center Nav Items*/
+.topnav li a {
+    max-width: 50%;
+}
+.topnav ol {
+    align-self: flex-start;
+}
+.aligner-item--bottom {
+    align-self: flex-end;
+}
+/*Flex Shit End*/
+
+.topnav a {
+  /*float: left; ALL THIS IS TO SEE IF FLEX WORKS
+  position: absolute;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;*/
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  color:#f2f2f2;
+  /*background-color: #B3B3B3;*/
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav .icon {
+  display: none;
+}
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+}
+
+/* Flex Styles */
+
+.about {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+#centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.flex-text {
+    max-width: 85%;
+}
+.about-reporting {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.flex-text-report{
+    max-width: 85%;
+}
+.section-content-wrapper{
+    display: block;
+    box-sizing:border-box;
+    width: 100%;
+    max-width: 100%;
+}
+.section-content-wrapper > .inset{
+    display: flex;
+    align-items:flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    background: lightgrey;
+}
+@media screen and (max-width: 600px) {
+    .section-content-wrapper > .inset {
+        display: flex;
+        flex-flow: row-wrap;
+        flex-direction: column;/*maybe delete this*/
+        justify-content: center;
+    }
+}
+.section-content-wrapper > .inset > article{
+    flex: 0 0 30%;
+    background: lightgrey;
+
+}
+.section-content-wrapper > .inset > article > h2{
+    text-align: center;
+    margin: 0 auto;
+    padding: .5em 0;
+}
+.section-content-wrapper > .inset > article > .image-wrap{
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 20px;
+    background: grey;
+}
+
+.section-content-wrapper > .inset > article > .content-wrap{
+    background: grey;
+    padding: 10px;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+}
+.parallaxy {
+    display: block;
+    width: 100%;
+    height: 300px;
+    border: none;
+    margin: 0 auto;
+    max-width: 100%;
+    overflow: hidden;
+    background: url('images/cloud_computing.jpg')no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.parallaxy2 {
+    display: block;
+    width: 100%;
+    height: 300px;
+    border: none;
+    margin: 0 auto;
+    max-width: 100%;
+    overflow: hidden;
+    background: url('images/reporting.jpg')no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+/* Form */
+/* Note: section-content-wrapper gets flex properties on line 122 */
+.section-form-wrapper {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    background: lightgrey;
+}
+.section-form-wrapper > .inset-form > .flex-form > .formContact {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    font-family: 'Ubuntu', sans-serif;
+    padding: 10px;
+    border: none;
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.section-form-wrapper > .inset-form > .flex-form > .formContact input,
+.section-form-wrapper > .inset-form > .flex-form > .formContact textarea{
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 1em .75em;
+    margin: 0 auto 10px;
+    resize:none;
+    outline:none;
+}
+
+.section-form-wrapper > .inset-form > .flex-form > .formContact input[type='submit']  {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    padding-top: 20px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 0px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border: 3px solid #FFFFFF;
+    color: #FFFFFF;
+    transition: all 0.3s linear;
+    display: block;
+}
+.section-form-wrapper > .inset-form > .flex-form > .formContact input[type='submit']:hover {
+    background-color: #FEFEFE;
+    color: #C4C4C4;
+    cursor: pointer;
+}
+
+footer {
+    display: flex;
+    background: #2d2d2d;
+    min-height: 75px;
+    max-height: 100%;
+
+}
+
+body.loading {
+    overflow: hidden;   
+}

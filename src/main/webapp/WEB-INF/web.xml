@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <display-name>passcheck</display-name>
+    <servlet>
+        <servlet-name>CheckPass</servlet-name>
+        <servlet-class>com.kisoki.passcheck.servlets.CheckPass</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>WordListUpload</servlet-name>
+        <servlet-class>com.kisoki.passcheck.servlets.WordListUpload</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UploadWorker</servlet-name>
+        <servlet-class>com.kisoki.passcheck.servlets.UploadWorker</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CheckPass</servlet-name>
+        <url-pattern>/CheckPass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WordListUpload</servlet-name>
+        <url-pattern>/WordListUpload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UploadWorker</servlet-name>
+        <url-pattern>/UploadWorker</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>
