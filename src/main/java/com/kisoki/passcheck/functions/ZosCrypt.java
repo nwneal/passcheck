@@ -22,7 +22,7 @@ import org.apache.commons.codec.binary.Base64;
 public class ZosCrypt {
     private static SecretKeySpec secretKey;
     private static byte[] key;
-    private static String masterPass = "$$25340620020116$$";
+    private static String masterPass = "";
     
     public static String encryptDBCred(String user, String pass) {
             String encStr = "user="+user+"&password="+pass;
