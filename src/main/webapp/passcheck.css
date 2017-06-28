@@ -176,7 +176,13 @@ footer p {
     margin: 0 auto 20px;
     background: grey;
 }
+.section-content-wrapper > .inset > article > .content-wrap > div{
+    display: block;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 
+}    
 .section-content-wrapper > .inset > article > .content-wrap{
     background: grey;
     padding: 10px;
