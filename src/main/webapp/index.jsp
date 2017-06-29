@@ -32,7 +32,7 @@
 					</div>
 						<div class="flex-form" id="imessage">
 							<form onsubmit="event.preventDefault(); passSubmit();" class="formContact" id="passInput">
-								<input class="infld" type="text" name="password" id="password" />
+								<input class="infld" type="password" name="password" id="password" />
 								<input class="inbtn"  id="mySubmit" type="submit" value="Run Checker" />
 							</form>
 						</div>	
