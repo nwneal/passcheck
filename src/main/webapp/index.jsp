@@ -14,7 +14,7 @@
 
 		<meta name="mobile-web-app-capable" content="yes">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="shortcut icon" href="/passcheck/src/main/webapp/favicon.ico">
 	</head>
 	<body>
 		<div class="inside-container">
@@ -32,7 +32,7 @@
 					</div>
 						<div class="flex-form" id="imessage">
 							<form onsubmit="event.preventDefault(); passSubmit();" class="formContact" id="passInput">
-								<input class="infld" type="password" name="password" id="password" />
+								<input class="infld" type="text" name="password" id="password" />
 								<input class="inbtn"  id="mySubmit" type="submit" value="Run Checker" />
 							</form>
 						</div>	
@@ -52,11 +52,15 @@
 			<section class="section-content-wrapper">
 				<div class="inset">
 					<article>
-						<div class="content-wrap" id="messageBad" style="display: none;">
-							<p style="color: red;">Match Found: You should change your password!</p>
-						</div>
 						<div class="content-wrap" id="messageGood" style="display: none;">
-							<p style="color: green;">No Match Found: Your password is safe!</p>
+							<div class="alert alert-success" role="alert">
+								<strong>No Match Found: Your password is safe!</strong>
+							</div>
+						</div>
+						<div class="content-wrap" id="messageBad" style="display: none;">
+							<div class="alert alert-danger" role="alert">
+								<strong>Match Found: You should change your password!</strong>
+							</div>
 						</div>
 					</article>
 				</div>
@@ -91,14 +95,55 @@
 		
 					var output;
 					if (data.passfound) {
-					  $('#messageBad').css("display", "inline-block");
+					  $('#messageBad').css("display", "block");
 					}
 					else {
-                                          $('#messageGood').css("display", "inline-block");
+                                          $('#messageGood').css("display", "block");
 					}
 					$('#loadingIcon').hide();
 				});
 			}
 		</script>
+		<!--script>
+			function passSubmit() {
+				$('#loadingIcon').show();
+				//var sendValue = $.post('/CheckPass', {
+				var sendValue = $.post('https://passcheck-kisoki-com.appspot.com/CheckPass', {
+					password: $('#password').val()
+				});
+				sendValue.done(function (data) {
+					var output = "";
+					if (data.passfound) {
+						output = "<font color=\"red\">Password Found!</font>";
+					}
+					else {
+						output = "<font color=\"green\">Password Not Found!</font>";
+					}
+					$('#checkResult').html(output);
+					$('#loadingIcon').hide();
+				});
+			}
+		</script-->
+		
+		<!--script>
+			function passSubmit() {
+				$('#loadingIcon').show();
+				var sendValue = $.post('/CheckPass', {
+					password: $('#password').val()
+				});
+				sendValue.done(function (data) {
+					var resultGood = $('<div />').append(data).find('#messageGood').html();
+					var resultBad = $('<div />').append(data).find('#messageBad').html();
+					var output;
+					if (data.passfound) {
+					  output = resultBad;
+					}
+					else {
+						output = resultGood;
+					}
+				$('#loadingIcon').hide();
+				});
+			}
+		</script-->
 	</body>
 </html>
