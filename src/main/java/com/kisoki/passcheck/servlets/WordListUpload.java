@@ -13,6 +13,7 @@ import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 import com.google.appengine.api.blobstore.BlobstoreInputStream;
 import com.google.appengine.api.taskqueue.QueueFactory;
 import com.google.appengine.api.taskqueue.TaskOptions;
+import com.kisoki.passcheck.functions.BlobFunc;
 import com.kisoki.passcheck.functions.checkPassword;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -48,19 +49,31 @@ public class WordListUpload extends HttpServlet {
         List<BlobKey> blobKeys = new ArrayList<BlobKey>(blobs.values());
 
         // check filetype for compatibility
-        BlobInfoFactory blobInfoFactory = new BlobInfoFactory();
-        BlobInfo blobInfo = blobInfoFactory.loadBlobInfo(blobKeys.get(0));
-        String fileType = blobInfo.getContentType();
-        String fileName = blobInfo.getFilename();
-        long fileSize = blobInfo.getSize();
-        String fileExt = FilenameUtils.getExtension(fileName);
-        if ((fileExt.equals("txt") || fileExt.equals("lst")) && fileType.equals("text/plain") && fileSize <= 307200) {
-           // add file to db upload queue...
-           com.google.appengine.api.taskqueue.Queue queue = QueueFactory.getDefaultQueue();
-           queue.add(TaskOptions.Builder.withUrl("/UploadWorker").param("blobkey", blobKeys.get(0).getKeyString()));
-           response.sendRedirect("/");
-        } else {
-            blobstoreService.delete(blobKeys.get(0));
+        if (blobKeys != null || !blobKeys.isEmpty()) {
+            BlobInfoFactory blobInfoFactory = new BlobInfoFactory();
+            BlobInfo blobInfo = blobInfoFactory.loadBlobInfo(blobKeys.get(0));
+            String fileType = blobInfo.getContentType();
+            String fileName = blobInfo.getFilename();
+            long fileSize = blobInfo.getSize();
+            String fileExt = FilenameUtils.getExtension(fileName);
+            
+            
+            
+            if ((fileExt.equals("txt") || fileExt.equals("lst")) && fileType.equals("text/plain") && fileSize <= 10000000) {
+                // add file to db upload queue...
+                String[] files = BlobFunc.splitBlob(blobKeys.get(0), fileName);
+               
+                for (int i = 0; i < files.length; i++) {
+                    com.google.appengine.api.taskqueue.Queue queue = QueueFactory.getDefaultQueue();
+                    queue.add(TaskOptions.Builder.withUrl("/UploadWorker").param("file", files[i]));
+                }
+                blobstoreService.delete(blobKeys.get(0));
+                response.sendRedirect("/");
+            } else {
+                blobstoreService.delete(blobKeys.get(0));
+                response.sendRedirect("/upload.jsp?error=1");
+            }
+        }else {
             response.sendRedirect("/upload.jsp?error=1");
         }
             

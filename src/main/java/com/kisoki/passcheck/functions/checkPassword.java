@@ -56,7 +56,7 @@ public class checkPassword {
         return result;
     }
     
-    public static void uploadNewPass(List<String> pass) throws ServletException {
+    public static boolean uploadNewPass(List<String> pass) throws ServletException {
         String updateStmt = "INSERT INTO password_list VALUES ";
         for (int i = 0; i < pass.size()-1; i++) {
             updateStmt += "(?,1),";
@@ -81,8 +81,10 @@ public class checkPassword {
             stmt.close();
             conn.close();
         }  catch (SQLException e) {
-            throw new ServletException("SQL error", e);
+            //throw new ServletException("SQL error", e);
+            return false;
         }
+        return true;
     }
     
     public static int grabPassCount(String pass) throws ServletException {
