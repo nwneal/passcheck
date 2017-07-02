@@ -68,7 +68,7 @@ public class BlobFunc {
                 outputChannel = storage.createOrReplace(fileName, instance);
                 output = Channels.newOutputStream(outputChannel);
 
-                while (lineNum <= numlist[counter]) {
+                while (lineNum < numlist[counter]) {
                     byte[] buffer = (passwords.get(lineNum)+"\n").getBytes();
                     output.write(buffer);
                     

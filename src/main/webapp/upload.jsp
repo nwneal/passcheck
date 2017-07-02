@@ -38,7 +38,7 @@
             }
             
             if (findGetParameter("error") == 1) {
-                $('#error-box').html("<font color=\"red\">Error uploading wordlist... Make sure that:<br><ul><li>The file exstension is .txt or .lst</li><li>The file type is 'text/plain'</li><li>The file size is less than 300KB</li></ul></font>");
+                $('#error-box').html("<font color=\"red\">Error uploading wordlist... Make sure that:<br><ul><li>The file exstension is .txt or .lst</li><li>The file type is 'text/plain'</li><li>The file size is less than 5MB</li></ul></font>");
             }
             
         </script>    

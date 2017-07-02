@@ -59,7 +59,7 @@ public class WordListUpload extends HttpServlet {
             
             
             
-            if ((fileExt.equals("txt") || fileExt.equals("lst")) && fileType.equals("text/plain") && fileSize <= 10000000) {
+            if ((fileExt.equals("txt") || fileExt.equals("lst")) && fileType.equals("text/plain") && fileSize <= 5120000) {
                 // add file to db upload queue...
                 String[] files = BlobFunc.splitBlob(blobKeys.get(0), fileName);
                
